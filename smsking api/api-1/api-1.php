@@ -48,12 +48,12 @@
       <tr>
         <td width="69">&nbsp;</td>
         <td width="260">
-          <input name="sUserName" type="hidden" id="sUserName" value="sssss" readonly="readonly" />
+          <input name="sUserName" type="hidden" id="sUserName" value="testapi01" readonly="readonly" />
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
-        <td><input name="sPassword" type="hidden" id="sPassword" value="dddddd" readonly="readonly" /></td>
+        <td><input name="sPassword" type="hidden" id="sPassword" value="testapi" readonly="readonly" /></td>
       </tr>
       <tr>
         <td>��������</td>
