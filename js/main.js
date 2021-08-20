@@ -1,20 +1,20 @@
 // const cors = "https://cors-anywhere.herokuapp.com/";
-const url = "https://api2.kotsms.com.tw/kotsmsapi-1.php";
-const params = new URLSearchParams();
+// const url = "https://api2.kotsms.com.tw/kotsmsapi-1.php";
+// const params = new URLSearchParams();
 
-params.append("username", "josemich0511");
-params.append("password", "dppss89111");
-params.append("dstaddr", "0952260525");
-params.append("smbody", "簡訊王 1111@4:198 api 簡訊測試");
+// params.append("username", "josemich0511");
+// params.append("password", "dppss89111");
+// params.append("dstaddr", "0952260525");
+// params.append("smbody", "簡訊王 1111@4:198 api 簡訊測試");
 
-axios
-  .post(url, params)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// axios
+//   .post(url, params)
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // fetch(cors + url, {
 //   method: "POST",
@@ -36,3 +36,20 @@ axios
 //   .catch((err) => {
 //     console.log(res);
 //   });
+
+const { ref, reactive } = Vue;
+const App = {
+  setup() {
+    const table = reactive({
+      username: "帳號",
+      password: "密碼",
+      method: "傳送方式",
+      sms_msg: "訊息內容",
+      phone: "手機號碼",
+    });
+
+    return { table };
+  },
+};
+
+Vue.createApp(App).mount("#app");

@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- 簡訊內容(BIG5) -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      iframe {
-        display: block;
-        margin: auto;
-      }
-    </style>
   </head>
   <body>
-    <script src="http://kotsms.com.tw/smsform.php?twidth=800&amp;theight=600&amp;charset=big5"></script>
+    <div id="app">
+      <h1>SMS 發送</h1>
+      <div class="row">
+        <div class="col">{{table.username}} <input type="text" /></div>
+        <div class="col">{{table.password}} <input type="text" /></div>
+        <div class="col">{{table.method}} <input type="text" /></div>
+        <div class="col">{{table.sms_msg}} <input type="text" /></div>
+        <div class="col">{{table.phone}} <input type="text" /></div>
+      </div>
+    </div>
+
+    <script src="./js/vue.global.prod.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
