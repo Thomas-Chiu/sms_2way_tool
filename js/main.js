@@ -40,15 +40,38 @@
 const { ref, reactive } = Vue;
 const App = {
   setup() {
-    const table = reactive({
-      username: "帳號",
-      password: "密碼",
-      method: "傳送方式",
-      sms_msg: "訊息內容",
-      phone: "手機號碼",
+    const url = "https://imsp.emome.net:4443/imsp/sms/servlet/SubmitSM";
+    // data
+    const model = reactive({
+      username: "14523",
+      password: "14523Qaz",
+      method: "POST",
+      phone: null,
+      message: "",
     });
+    // method
+    const sendSms = () => {
+      console.log(model);
+      const params = new URLSearchParams();
+      params.append("account", model.username);
+      params.append("password", model.password);
+      params.append("to_addr", model.phone);
+      params.append("msg", model.message);
+      console.log(params.toString());
 
-    return { table };
+      axios
+        .post(url, params)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+
+      params.delete("account");
+      params.delete("password");
+      params.delete("to_addr");
+      params.delete("msg");
+      console.log(params.toString());
+    };
+
+    return { model, sendSms };
   },
 };
 

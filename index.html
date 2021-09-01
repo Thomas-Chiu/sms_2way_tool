@@ -11,12 +11,20 @@
     <div id="app">
       <h1>SMS 發送</h1>
       <div class="row">
-        <div class="col">{{table.username}} <input type="text" /></div>
-        <div class="col">{{table.password}} <input type="text" /></div>
-        <div class="col">{{table.method}} <input type="text" /></div>
-        <div class="col">{{table.sms_msg}} <input type="text" /></div>
-        <div class="col">{{table.phone}} <input type="text" /></div>
+        <div class="col">
+          帳號：<input type="text" v-model="model.username" disabled />
+        </div>
+        <div class="col">
+          密碼：<input type="password" v-model="model.password" disabled />
+        </div>
+        <div class="col">
+          門號： <input type="text" v-model="model.phone" />
+        </div>
+        <div class="col">訊息內容：</div>
+        <textarea v-model="model.message" cols="30" rows="10"></textarea>
       </div>
+
+      <input type="button" value="送出" @click="sendSms" />
     </div>
 
     <script src="./js/vue.global.prod.js"></script>
