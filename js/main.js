@@ -62,14 +62,17 @@ const App = {
       axios
         .post(url, params)
         .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-
-      params.delete("account");
-      params.delete("password");
-      params.delete("to_addr");
-      params.delete("msg");
-      console.log(params.toString());
+        .catch((err) => {
+          // 中華電信 API 無 Access-Control-Allow-Origin 所以寫在 catch
+          console.log(err)
+          params.delete("account");
+          params.delete("password");
+          params.delete("to_addr");
+          params.delete("msg");
+          console.log(params.toString());
+        });
     };
+
 
     return { model, sendSms };
   },
