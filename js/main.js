@@ -1,36 +1,45 @@
+import config from "./config.js";
+
 const { ref, reactive } = Vue;
 const App = {
   setup() {
-    const url = "https://imsp.emome.net:4443/imsp/sms/servlet/SubmitSM";
-    // data
+    // const cors = "https://cors-anywhere.herokuapp.com/";
+    const cors = "http://localhost:8080/";
+    const url1 = "http://api.every8d.com/API21/HTTP/sendSMS.ashx";
+    const url2 = "https://oms.every8d.com/API21/HTTP/sendSMS.ashx";
     const model = reactive({
-      username: "14523",
-      password: "14523Qaz",
-      method: "POST",
-      phone: null,
-      message: "",
+      UID: config.username,
+      PWD: config.password,
+      // 簡訊主旨
+      // SB: "",
+      MSG: "",
+      DEST: "0908443977",
+      // 簡訊預定發送時間 YYYYMMDDhhmnss
+      // ST: ""
     });
+
     // method
     const sendSms = () => {
       console.log(model);
       const params = new URLSearchParams();
-      params.append("account", model.username);
-      params.append("password", model.password);
-      params.append("to_addr", model.phone);
-      params.append("msg", model.message);
+      params.append("UID", model.UID);
+      params.append("PWD", model.PWD);
+      params.append("MSG", model.MSG);
+      params.append("DEST", model.DEST);
       console.log(params.toString());
 
       axios
-        .post(url, params)
-        .then((res) => console.log(res))
-        .catch((err) => {
-          // 中華電信 API 無 Access-Control-Allow-Origin 所以寫在 catch
-          console.log(err);
-          params.delete("account");
-          params.delete("password");
-          params.delete("to_addr");
-          params.delete("msg");
+        .post(cors + url2, params)
+        .then((res) => {
+          console.log(res);
+          params.delete("UID");
+          params.delete("PWD");
+          params.delete("SB");
+          params.delete("MSG");
           console.log(params.toString());
+        })
+        .catch((err) => {
+          console.log(err);
         });
     };
 
