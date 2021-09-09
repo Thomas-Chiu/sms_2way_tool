@@ -17,8 +17,14 @@ const App = {
       // 簡訊預定發送時間 YYYYMMDDhhmnss
       // ST: ""
     });
+    const resData = reactive({
+      CREDIT: "",
+      SENDED: "",
+      COST: "",
+      UNSEND: "",
+      BATCH_ID: "",
+    });
 
-    // method
     const sendSms = () => {
       console.log(model);
       const params = new URLSearchParams();
@@ -31,7 +37,16 @@ const App = {
       axios
         .post(cors + url2, params)
         .then((res) => {
-          console.log(res);
+          // 回傳值
+          let temp = [];
+          temp = res.data.split(",");
+          resData.CREDIT = temp[0];
+          resData.SENDED = temp[1];
+          resData.COST = temp[2];
+          resData.UNSEND = temp[3];
+          resData.BATCH_ID = temp[4];
+          console.log(resData);
+          // 清除參數
           params.delete("UID");
           params.delete("PWD");
           params.delete("SB");
@@ -43,7 +58,9 @@ const App = {
         });
     };
 
-    return { model, sendSms };
+    const getReplyMessage = (UID, PWD) => {};
+
+    return { model, sendSms, resData };
   },
 };
 
