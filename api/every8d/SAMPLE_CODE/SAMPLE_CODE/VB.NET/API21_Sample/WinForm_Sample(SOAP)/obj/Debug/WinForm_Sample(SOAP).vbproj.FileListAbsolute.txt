@@ -1,0 +1,11 @@
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\bin\Debug\WinForm_Sample(SOAP).exe.config
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\bin\Debug\WinForm_Sample(SOAP).exe
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\bin\Debug\WinForm_Sample(SOAP).pdb
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\bin\Debug\WinForm_Sample(SOAP).xml
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample_SOAP_.Form1.resources
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample_SOAP_.Resources.resources
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample(SOAP).vbproj.GenerateResource.Cache
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample(SOAP).exe
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample(SOAP).xml
+D:\Projects\API21\SAMPLE_CODE\VB.NET\API21_Sample\WinForm_Sample(SOAP)\obj\Debug\WinForm_Sample(SOAP).pdb

@@ -1,0 +1,10 @@
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(SOAP)\bin\Web_Sample(SOAP).dll
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(SOAP)\bin\Web_Sample(SOAP).pdb
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\Web_Sample(SOAP).dll
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\Web_Sample(SOAP).pdb
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(SOAP)\bin\Web_Sample(SOAP).dll
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(SOAP)\bin\Web_Sample(SOAP).pdb
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\Web_Sample(SOAP).dll
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(SOAP)\obj\Debug\Web_Sample(SOAP).pdb

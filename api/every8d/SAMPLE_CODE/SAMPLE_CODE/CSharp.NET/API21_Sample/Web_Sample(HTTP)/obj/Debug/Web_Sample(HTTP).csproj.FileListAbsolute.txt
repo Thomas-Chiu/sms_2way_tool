@@ -1,0 +1,10 @@
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(HTTP)\bin\Web_Sample(HTTP).dll
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(HTTP)\bin\Web_Sample(HTTP).pdb
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\Web_Sample(HTTP).dll
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\Web_Sample(HTTP).pdb
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(HTTP)\bin\Web_Sample(HTTP).dll
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(HTTP)\bin\Web_Sample(HTTP).pdb
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\Web_Sample(HTTP).dll
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\Web_Sample(HTTP)\obj\Debug\Web_Sample(HTTP).pdb

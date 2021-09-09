@@ -1,0 +1,10 @@
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\bin\Debug\WinForm_Sample(HTTP).exe
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\bin\Debug\WinForm_Sample(HTTP).pdb
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample_HTTP_.Properties.Resources.resources
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample(HTTP).csproj.GenerateResource.Cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample(HTTP).exe
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample(HTTP).pdb
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample_HTTP_.Form1.resources
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample(HTTP).exe
+D:\Projects\API21\SAMPLE_CODE\CSharp.NET\API21_Sample\WinForm_Sample(HTTP)\obj\Debug\WinForm_Sample(HTTP).pdb

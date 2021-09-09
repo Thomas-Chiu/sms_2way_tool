@@ -1,0 +1,8 @@
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\bin\Debug\API21_Sample.exe
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\bin\Debug\API21_Sample.pdb
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\API21_Sample.Form1.resources
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\API21_Sample.Properties.Resources.resources
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\API21_Sample.csproj.GenerateResource.Cache
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\API21_Sample.exe
+D:\Projects\API21\SAMPLE_CODE\C#.NET\API21_Sample\API21_Sample\obj\Debug\API21_Sample.pdb

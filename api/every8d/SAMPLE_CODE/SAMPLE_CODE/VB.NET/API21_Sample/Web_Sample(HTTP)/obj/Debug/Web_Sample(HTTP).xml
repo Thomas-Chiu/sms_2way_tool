@@ -1,0 +1,112 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Web_Sample(HTTP)
+</name>
+</assembly>
+<members>
+<member name="F:Web_Sample_HTTP_._Default.Head1">
+	<summary>
+Head1 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.form1">
+	<summary>
+form1 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.accountInputText">
+	<summary>
+accountInputText 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.passwordInputText">
+	<summary>
+passwordInputText 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.subjectInputText">
+	<summary>
+subjectInputText 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.contentInputText">
+	<summary>
+contentInputText 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.phonesInputText">
+	<summary>
+phonesInputText 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="F:Web_Sample_HTTP_._Default.btnSend">
+	<summary>
+btnSend 控制項。
+</summary>
+	<remarks>
+自動產生的欄位。
+將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+</remarks>
+</member><member name="M:Web_Sample_HTTP_.SMSHttp.sendSMS(System.String,System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ 傳送簡訊
+ </summary>
+	<param name="userID">帳號</param>
+	<param name="password">密碼</param>
+	<param name="subject">簡訊主旨，主旨不會隨著簡訊內容發送出去。用以註記本次發送之用途。可傳入空字串。</param>
+	<param name="content">簡訊發送內容</param>
+	<param name="mobile">接收人之手機號碼。格式為: +886912345678或09123456789。多筆接收人時，請以半形逗點隔開( , )，如0912345678,0922333444。</param>
+	<param name="sendTime">簡訊預定發送時間。-立即發送：請傳入空字串。-預約發送：請傳入預計發送時間，若傳送時間小於系統接單時間，將不予傳送。格式為YYYYMMDDhhmnss；例如:預約2009/01/31 15:30:00發送，則傳入20090131153000。若傳遞時間已逾現在之時間，將立即發送。</param>
+	<returns>true:傳送成功；false:傳送失敗</returns>
+	<remarks></remarks>
+</member><member name="P:Web_Sample_HTTP_.My.MyWebExtension.Computer">
+	<summary>
+ 傳回主機電腦的相關資訊。
+ </summary>
+</member><member name="P:Web_Sample_HTTP_.My.MyWebExtension.User">
+	<summary>
+ 傳回目前 Web 使用者的資訊。
+ </summary>
+</member><member name="P:Web_Sample_HTTP_.My.MyWebExtension.Request">
+	<summary>
+ 傳回 Request 物件。
+ </summary>
+</member><member name="P:Web_Sample_HTTP_.My.MyWebExtension.Response">
+	<summary>
+ 傳回 Response 物件。
+ </summary>
+</member><member name="P:Web_Sample_HTTP_.My.MyWebExtension.Log">
+	<summary>
+ 傳回 Asp 記錄物件。
+ </summary>
+</member><member name="T:Web_Sample_HTTP_.My.MyWebExtension">
+	<summary>
+ 用來定義可用於 Web 專案 My 命名空間中之屬性的模組。
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
