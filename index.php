@@ -15,16 +15,16 @@
       <h1>SMS 發送</h1>
       <div class="row">
         <div class="col">
-          帳號：<input type="text" v-model="model.UID" disabled />
+          帳號：<input type="text" v-model="sendModel.UID" disabled />
         </div>
         <div class="col">
-          密碼：<input type="password" v-model="model.PWD" disabled />
+          密碼：<input type="password" v-model="sendModel.PWD" disabled />
         </div>
         <div class="col">
-          門號： <input type="text" v-model="model.DEST" />
+          門號： <input type="text" v-model="sendModel.DEST" />
         </div>
         <div class="col">訊息內容：</div>
-        <textarea v-model="model.MSG" cols="30" rows="10"></textarea>
+        <textarea v-model="sendModel.MSG" cols="30" rows="10"></textarea>
       </div>
       <input type="button" value="送出" @click="sendSms" />
     </div>
@@ -33,18 +33,18 @@
       <h1>SMS 回覆</h1>
       <div class="row">
         <div class="col">
-          帳號：<input type="text" v-model="model.UID" disabled />
+          剩餘點數：<input type="text" v-model="sendModel.RES.CREDIT" disabled />
         </div>
         <div class="col">
-          密碼：<input type="password" v-model="model.PWD" disabled />
+          扣除點數：<input type="text" v-model="sendModel.RES.COST" disabled />
         </div>
         <div class="col">
-          門號： <input type="text" v-model="model.DEST" />
+          查詢序號： <input type="text" v-model="sendModel.RES.BATCH_ID" disabled />
         </div>
-        <div class="col">訊息內容：</div>
-        <textarea v-model="model.MSG" cols="30" rows="10"></textarea>
+        <div class="col">回覆內容：</div>
+        <textarea v-model="replyModel.RES" cols="30" rows="10"></textarea>
       </div>
-      <input type="button" value="送出" @click="sendSms" />
+      <h1>
     </div>
   </div>
 
