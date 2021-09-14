@@ -16,6 +16,7 @@ const receiver = () => {
     reply["BatchID"] = req.body.BatchID;
     reply["ReceiverMobile"] = decodeURIComponent(req.body.RM);
     reply["ReplyTime"] = req.body.RT;
+    reply["Stauts"] = req.body.STATUS;
     reply["Content"] = decodeURIComponent(req.body.SM);
     reply["MsgRecordNo"] = req.body.MR;
     reply["UserAccount"] = req.body.USERID;
