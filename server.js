@@ -49,7 +49,7 @@ cors_proxy
     },
   })
   .listen(port, host, function () {
-    console.log("Running CORS Anywhere on " + host + ":" + port);
+    console.log("CORS 伺服器 " + host + ":" + port);
   });
 
 // 引用 receiver.js
