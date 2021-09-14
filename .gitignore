@@ -1,1 +1,6 @@
-js/config.js
+*.swp
+*.tmp
+*.log
+
+coverage/
+node_modules/

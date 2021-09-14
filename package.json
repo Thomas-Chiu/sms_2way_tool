@@ -28,6 +28,7 @@
     "server.js"
   ],
   "dependencies": {
+    "express": "^4.17.1",
     "http-proxy": "1.11.1",
     "nodemon": "^2.0.12",
     "proxy-from-env": "0.0.1"
