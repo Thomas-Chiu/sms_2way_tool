@@ -1,6 +1,6 @@
 import config from "./config.js";
 
-const { ref, reactive, watch } = Vue;
+const { reactive, watch } = Vue;
 const App = {
   setup() {
     const replyData =
