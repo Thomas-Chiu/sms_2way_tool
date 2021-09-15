@@ -7,6 +7,7 @@ const App = {
       "3\r\n\t+886908443977\tsend sms from vue3*3\t2021/09/10 14:52:20\n\t+886908443977\tsend sms from phone *2\t2021/09/10 14:56:35\n\t+886908443977\tsend sms from phone *3\t2021/09/10 14:56:35\n";
     const cors = "http://localhost:8080/";
     const url = "http://api.every8d.com/API21/HTTP";
+    const myurl = "http://localhost:3000/replier";
     const sendModel = reactive({
       // SB: "", 簡訊主旨
       // ST: "", 簡訊預定發送時間 YYYYMMDDhhmnss
@@ -23,7 +24,19 @@ const App = {
       BID: "",
       RES: "",
     });
+    const replierModel = reactive({
+      RES: {
+        BatchID: "",
+        Content: "",
+        MsgRecordNo: "",
+        ReceiverMobile: "",
+        ReplyTime: "",
+        Stauts: "",
+        UserAccount: "",
+      },
+    });
 
+    // 1. 傳送簡訊
     const sendSms = () => {
       console.log(sendModel);
       let params = new URLSearchParams();
@@ -54,30 +67,75 @@ const App = {
         .catch((err) => {
           console.log(err);
         });
+
+      getReplier();
     };
 
+    /*
+    // 2. 發送狀態查詢
     const getReplyMessage = (BID) => {
       let params = new URLSearchParams();
+      let sendReq = () => {
+        setInterval(() => {
+          axios
+            .post(cors + url + "/getReplyMessage.ashx", params)
+            .then((res) => {
+              replyModel.RES = res.data;
+              console.log(res.data);
+            })
+            .catch((err) => console.log(err));
+        }, 3000);
+      };
+      let stopReq = () => {
+        clearInterval(sendReq);
+        console.log("STOP");
+      };
+
       params.append("UID", replyModel.UID);
       params.append("PWD", replyModel.PWD);
       params.append("BID", BID);
       console.log(params.toString());
+      sendReq();
+      setTimeout(stopReq, 10000);
+    };
+    // 監控傳送後回覆資料
+    watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID));
+    */
 
-      setInterval(() => {
-        axios
-          .post(cors + url + "/getReplyMessage.ashx", params)
-          .then((res) => {
-            replyModel.RES = res.data;
-            console.log(res.data);
-          })
-          .catch((err) => console.log(err));
-      }, 3000);
+    // 3. 發送狀態主動通知
+    const getReplier = () => {
+      let sendReq = () => {
+        setInterval(() => {
+          axios
+            .get(`${myurl}/${config.taxId}`)
+            .then((res) => {
+              if (res.data.result === undefined) return;
+              replierModel.RES.BatchID = res.data.result.BatchID;
+              replierModel.RES.Content = res.data.result.Content;
+              replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
+              replierModel.RES.ReceiverMobile = res.data.result.ReceiverMobile;
+              replierModel.RES.ReplyTime = res.data.result.ReplyTime;
+              replierModel.RES.Stauts = res.data.result.Stauts;
+              replierModel.RES.UserAccount = res.data.result.UserAccount;
+              console.log(replierModel.RES);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }, 2000);
+      };
+
+      sendReq();
     };
 
-    // 監控 API 回覆
-    watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID));
-
-    return { sendModel, replyModel, sendSms, getReplyMessage };
+    return {
+      sendModel,
+      replyModel,
+      replierModel,
+      sendSms,
+      // getReplyMessage,
+      getReplier,
+    };
   },
 };
 

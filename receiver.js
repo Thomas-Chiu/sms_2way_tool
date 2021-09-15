@@ -3,25 +3,44 @@ const receiver = () => {
   const express = require("express");
   const app = express();
   const port = 3000;
-  const reply = {};
+  const replyItem = {};
+  const replyArr = [];
+  const taxId = "13091876";
 
   // 處理 HTTP request
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
   // 前端靜態資源
   app.use("/", express.static("public"));
+
   // 後端處理邏輯
   app.get("/receiver", (req, res) => {
-    res.status(200).send({ success: true });
-    reply["BatchID"] = req.body.BatchID;
-    reply["ReceiverMobile"] = decodeURIComponent(req.body.RM);
-    reply["ReplyTime"] = req.body.RT;
-    reply["Stauts"] = req.body.STATUS;
-    reply["Content"] = decodeURIComponent(req.body.SM);
-    reply["MsgRecordNo"] = req.body.MR;
-    reply["UserAccount"] = req.body.USERID;
+    if (Object.keys(req.body).length === 0) {
+      res.status(403).send({ success: false, message: "無權限" });
+      return;
+    }
+    res.status(200).send({ success: true, message: "OK" });
+    replyItem["BatchID"] = req.body.BatchID;
+    replyItem["ReceiverMobile"] = decodeURIComponent(req.body.RM);
+    replyItem["ReplyTime"] = req.body.RT;
+    replyItem["Stauts"] = req.body.STATUS;
+    replyItem["Content"] = decodeURIComponent(req.body.SM);
+    replyItem["MsgRecordNo"] = req.body.MR;
+    replyItem["UserAccount"] = req.body.USERID;
+    replyArr.push(replyItem);
+    // console.log(replyArr);
+  });
 
-    console.log(reply);
+  app.get("/replier/:taxId", (req, res) => {
+    if (req.params.taxId !== taxId) {
+      res.status(403).send({ success: false, message: "無權限" });
+      return;
+    }
+    // 送出後從陣列移除
+    res.status(200).send({ success: true, result: replyArr[0] });
+    replyArr.shift();
+    // console.log(replyArr);
   });
 
   app.listen(port, () => {
