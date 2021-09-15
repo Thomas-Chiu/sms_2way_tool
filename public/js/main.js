@@ -5,9 +5,9 @@ const App = {
   setup() {
     const replyData =
       "3\r\n\t+886908443977\tsend sms from vue3*3\t2021/09/10 14:52:20\n\t+886908443977\tsend sms from phone *2\t2021/09/10 14:56:35\n\t+886908443977\tsend sms from phone *3\t2021/09/10 14:56:35\n";
-    const cors = "http://localhost:8080/";
+    const cors = `http://localhost:${config.corsPort}/`;
     const url = "http://api.every8d.com/API21/HTTP";
-    const myurl = "http://localhost:3000/replier";
+    const myurl = `http://localhost:${config.webPort}/replier/${config.taxId}`;
     const sendModel = reactive({
       // SB: "", 簡訊主旨
       // ST: "", 簡訊預定發送時間 YYYYMMDDhhmnss
@@ -107,7 +107,7 @@ const App = {
       let sendReq = () => {
         setInterval(() => {
           axios
-            .get(`${myurl}/${config.taxId}`)
+            .get(myurl)
             .then((res) => {
               if (res.data.result === undefined) return;
               replierModel.RES.BatchID = res.data.result.BatchID;
