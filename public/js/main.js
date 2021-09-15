@@ -5,9 +5,9 @@ const App = {
   setup() {
     const replyData =
       "3\r\n\t+886908443977\tsend sms from vue3*3\t2021/09/10 14:52:20\n\t+886908443977\tsend sms from phone *2\t2021/09/10 14:56:35\n\t+886908443977\tsend sms from phone *3\t2021/09/10 14:56:35\n";
-    const cors = `http://localhost:${config.corsPort}/`;
+    const cors = `http://${config.host}:${config.corsPort}/`;
     const url = "http://api.every8d.com/API21/HTTP";
-    const myurl = `http://localhost:${config.webPort}/replier/${config.taxId}`;
+    const myurl = `http://${config.host}:${config.webPort}/replier/${config.taxId}`;
     const sendModel = reactive({
       // SB: "", 簡訊主旨
       // ST: "", 簡訊預定發送時間 YYYYMMDDhhmnss
@@ -122,7 +122,7 @@ const App = {
             .catch((err) => {
               console.log(err);
             });
-        }, 2000);
+        }, 5000);
       };
 
       sendReq();
