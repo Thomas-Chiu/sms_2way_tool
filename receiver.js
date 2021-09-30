@@ -11,11 +11,7 @@ const receiver = () => {
   // 處理 HTTP request
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(
-    cors({
-      origin: "http://www.jasslin.com:3000",
-    })
-  );
+  app.use(cors({ origin: "*" }));
 
   // 前端靜態資源
   app.use("/", express.static("public"));
