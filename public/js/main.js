@@ -27,11 +27,11 @@ const App = {
     const replierModel = reactive({
       RES: {
         BatchID: "",
-        Content: "",
-        MsgRecordNo: "",
         ReceiverMobile: "",
         ReplyTime: "",
         Stauts: "",
+        Content: "",
+        MsgRecordNo: "",
         UserAccount: "",
       },
     });

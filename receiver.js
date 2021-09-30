@@ -16,20 +16,21 @@ const receiver = () => {
 
   // 後端處理邏輯
   app.get("/receiver", (req, res) => {
-    if (Object.keys(req.body).length === 0) {
+    if (Object.keys(req.query).length === 0) {
       res.status(403).send({ success: false, message: "無權限" });
       return;
     }
+    console.log(req.query);
     res.status(200).send({ success: true, message: "OK" });
-    replyItem["BatchID"] = req.body.BatchID;
-    replyItem["ReceiverMobile"] = decodeURIComponent(req.body.RM);
-    replyItem["ReplyTime"] = req.body.RT;
-    replyItem["Stauts"] = req.body.STATUS;
-    replyItem["Content"] = decodeURIComponent(req.body.SM);
-    replyItem["MsgRecordNo"] = req.body.MR;
-    replyItem["UserAccount"] = req.body.USERID;
+    replyItem["BatchID"] = req.query.BatchID;
+    replyItem["ReceiverMobile"] = decodeURIComponent(req.query.RM);
+    replyItem["ReplyTime"] = req.query.RT;
+    replyItem["Stauts"] = req.query.STATUS;
+    replyItem["Content"] = decodeURIComponent(req.query.SM);
+    replyItem["MsgRecordNo"] = req.query.MR;
+    replyItem["UserAccount"] = req.query.USERID;
     replyArr.push(replyItem);
-    // console.log(replyArr);
+    console.log(replyArr);
   });
 
   app.get("/replier/:taxId", (req, res) => {
@@ -40,7 +41,7 @@ const receiver = () => {
     // 送出後從陣列移除
     res.status(200).send({ success: true, result: replyArr[0] });
     replyArr.shift();
-    // console.log(replyArr);
+    console.log(replyArr);
   });
 
   app.listen(port, () => {
