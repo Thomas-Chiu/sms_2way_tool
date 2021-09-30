@@ -6,7 +6,8 @@ const webPort = 3000;
 let isDev = false;
 let host = "";
 
-isDev = false ? (host = "60.251.157.49") : (host = "localhost");
+if (isDev === true) host = "localhost";
+if (isDev === false) host = "60.251.157.49";
 
 export default {
   username,

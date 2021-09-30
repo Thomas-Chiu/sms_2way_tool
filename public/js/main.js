@@ -1,6 +1,6 @@
 import config from "./config.js";
 
-const { reactive, watch } = Vue;
+const { reactive, watch, onMounted } = Vue;
 const App = {
   setup() {
     const replyData =
@@ -127,6 +127,10 @@ const App = {
 
       sendReq();
     };
+
+    onMounted(() => {
+      console.log(config);
+    });
 
     return {
       sendModel,
