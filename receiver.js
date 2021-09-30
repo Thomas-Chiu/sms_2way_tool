@@ -11,7 +11,13 @@ const receiver = () => {
   // 處理 HTTP request
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(cors({ origin: "*" }));
+  app.use(
+    cors({
+      origin: false,
+      allowedHeaders: ["Content-Type', 'Authorization"],
+    })
+  );
+  // app.use(cors());
 
   // 前端靜態資源
   app.use("/", express.static("public"));
