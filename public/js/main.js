@@ -1,4 +1,4 @@
-import config from "./config.js";
+import config from "./conf.js";
 
 const { reactive, watch, onMounted } = Vue;
 const App = {

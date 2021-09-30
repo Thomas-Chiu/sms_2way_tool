@@ -45,7 +45,7 @@ const receiver = () => {
   });
 
   app.listen(port, () => {
-    console.log(`web 伺服器 localhost:${port}`);
+    console.log(`web 伺服器 http://localhost:${port}`);
     // console.log(encodeURIComponent("+886952260525"));
     // console.log(encodeURIComponent("$AS+VERSION=JAS208S_20210914"));
   });
