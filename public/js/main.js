@@ -121,7 +121,7 @@ const App = {
     const getReplier = () => {
       setInterval(() => {
         axios
-          .get(myurl)
+          .get(cors + myurl)
           .then((res) => {
             if (res.data.result === undefined) return;
 
