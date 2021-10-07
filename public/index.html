@@ -15,13 +15,13 @@
         <div class="left flex-column">
           <h1 class="col">SMS 發送</h1>
           <div class="col">
-            帳號：<input type="text" v-model="sendModel.UID" disabled />
+            平台帳號：<input type="text" v-model="sendModel.UID" disabled />
           </div>
           <div class="col">
-            密碼：<input type="password" v-model="sendModel.PWD" disabled />
+            平台密碼：<input type="password" v-model="sendModel.PWD" disabled />
           </div>
           <div class="col">
-            門號：<input type="text" v-model="sendModel.DEST" />
+            手機門號：<input type="text" v-model="sendModel.DEST" />
           </div>
           <div class="col">訊息內容：</div>
           <textarea
@@ -41,23 +41,30 @@
         <div class="right flex-column">
           <h1 class="col">SMS 回覆</h1>
           <div class="col">
-            剩餘點數：<input
+            識別代碼：<input
               type="text"
-              v-model="sendModel.RES.CREDIT"
+              v-model="replierModel.RES.BatchID"
               disabled
             />
           </div>
           <div class="col">
-            扣除點數：<input
+            回覆門號：<input
               type="text"
-              v-model="sendModel.RES.COST"
+              v-model="replierModel.RES.ReceiverMobile"
               disabled
             />
           </div>
           <div class="col">
-            查詢序號：<input
+            回覆時間：<input
               type="text"
-              v-model="sendModel.RES.BATCH_ID"
+              v-model="replierModel.RES.ReplyTime"
+              disabled
+            />
+          </div>
+          <div class="col">
+            狀態回報：<input
+              type="text"
+              v-model="replierModel.RES.Stauts"
               disabled
             />
           </div>
@@ -67,6 +74,7 @@
             v-model="replierModel.RES.Content"
             cols="30"
             rows="10"
+            disabled
           ></textarea>
         </div>
       </div>

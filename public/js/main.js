@@ -44,7 +44,7 @@ const App = {
       params.append("PWD", sendModel.PWD);
       params.append("MSG", sendModel.MSG);
       params.append("DEST", sendModel.DEST);
-      console.log(`sendModel: ${sendModel}`);
+      console.log("sendModel:", sendModel);
 
       axios
         .post(cors + url + "/sendSMS.ashx", params)
@@ -57,18 +57,39 @@ const App = {
           sendModel.RES.COST = temp[2];
           sendModel.RES.UNSEND = temp[3];
           sendModel.RES.BATCH_ID = temp[4];
-          console.log(`sendModelRespond: ${sendModel.RES}`);
+          console.log("sendModelRespond:", sendModel.RES);
           // 清除參數
           params.delete("UID");
           params.delete("PWD");
           params.delete("MSG");
           params.delete("DEST");
+          // 視窗提示
+          if (sendModel.RES.CREDIT === "-24") {
+            alert(`請輸入訊息內容`);
+            return;
+          }
+          if (sendModel.RES.CREDIT === "-99") {
+            alert(`主機端發生不明錯誤，請與廠商窗口聯繫`);
+            return;
+          }
+          if (sendModel.RES.COST === "0") {
+            alert("發送失敗，請確認手機門號是否正確");
+            return;
+          }
+
+          alert(`
+              剩餘點數：${sendModel.RES.CREDIT}
+              發送通數：${sendModel.RES.SENDED}
+              扣除點數：${sendModel.RES.COST}
+              未發送數：${sendModel.RES.UNSEND}
+              識別代碼：${sendModel.RES.BATCH_ID}
+              `);
+          getReplyMessage(sendModel.RES.BATCH_ID);
+          getReplier();
         })
         .catch((err) => {
           console.log(err);
         });
-
-      // getReplier();
     };
 
     // 2. 發送狀態查詢
@@ -78,48 +99,46 @@ const App = {
       params.append("UID", replyModel.UID);
       params.append("PWD", replyModel.PWD);
       params.append("BID", replyModel.BID);
-      console.log(`replyModel: ${replyModel}`);
+      console.log("replyModel:", replyModel);
 
       setInterval(() => {
         axios
           .post(cors + url + "/getReplyMessage.ashx", params)
           .then((res) => {
+            if (res.data === 0) return;
+
             replyModel.RES = res.data;
-            console.log(`replyModelRespond: ${replierModel.RES}`);
+            console.log("replyModelRespond:", replierModel.RES);
           })
           .catch((err) => console.log(err));
       }, 5000);
     };
-    // 監控傳送後回覆資料
-    watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID));
 
-    /* 
-    3. 發送狀態主動通知
+    /* 監控傳送後回覆資料
+    watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID)); */
+
+    // 3. 發送狀態主動通知
     const getReplier = () => {
-      let sendReq = () => {
-        setInterval(() => {
-          axios
-            .get(myurl)
-            .then((res) => {
-              if (res.data.result === undefined) return;
-              replierModel.RES.BatchID = res.data.result.BatchID;
-              replierModel.RES.Content = res.data.result.Content;
-              replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
-              replierModel.RES.ReceiverMobile = res.data.result.ReceiverMobile;
-              replierModel.RES.ReplyTime = res.data.result.ReplyTime;
-              replierModel.RES.Stauts = res.data.result.Stauts;
-              replierModel.RES.UserAccount = res.data.result.UserAccount;
-              console.log(replierModel.RES);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }, 5000);
-      };
+      setInterval(() => {
+        axios
+          .get(myurl)
+          .then((res) => {
+            if (res.data.result === undefined) return;
 
-      sendReq();
+            replierModel.RES.BatchID = res.data.result.BatchID;
+            replierModel.RES.Content = res.data.result.Content;
+            replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
+            replierModel.RES.ReceiverMobile = res.data.result.ReceiverMobile;
+            replierModel.RES.ReplyTime = res.data.result.ReplyTime;
+            replierModel.RES.Stauts = res.data.result.Stauts;
+            replierModel.RES.UserAccount = res.data.result.UserAccount;
+            console.log("replierModelRespond:", replierModel.RES);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, 5000);
     };
-    */
 
     onMounted(() => {
       // console.log(config);
@@ -131,7 +150,7 @@ const App = {
       replierModel,
       sendSms,
       getReplyMessage,
-      // getReplier,
+      getReplier,
     };
   },
 };

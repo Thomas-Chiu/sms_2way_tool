@@ -17,7 +17,6 @@ const receiver = () => {
       allowedHeaders: ["Content-Type', 'Authorization"],
     })
   );
-  // app.use(cors());
 
   // 前端靜態資源
   app.use("/", express.static("public"));
@@ -48,7 +47,7 @@ const receiver = () => {
     }
     // 送出後從陣列移除
     res.status(200).send({ success: true, result: replyArr[0] });
-    // replyArr.shift();
+    replyArr.shift();
     console.log(replyArr);
   });
 
