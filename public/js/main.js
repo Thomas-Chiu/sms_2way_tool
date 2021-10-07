@@ -131,9 +131,9 @@ const App = {
             if (res.data.result === undefined) return;
             // 0 成功送達電信端、100 成功送達手機、999 為回覆簡訊
             if (
-              res.data.result === "0" ||
-              res.data.result === "100" ||
-              res.data.result === "999"
+              res.data.result.Stauts === "0" ||
+              res.data.result.Stauts === "100" ||
+              res.data.result.Stauts === "999"
             ) {
               replierModel.RES.BatchID = res.data.result.BatchID;
               replierModel.RES.Content = res.data.result.Content;
