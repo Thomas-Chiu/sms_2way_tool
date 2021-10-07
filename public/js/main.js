@@ -129,8 +129,12 @@ const App = {
           .get(cors + myurl)
           .then((res) => {
             if (res.data.result === undefined) return;
-            // 100 成功送達手機、999 為回覆簡訊
-            if (res.data.result === "100" || res.data.result === "999") {
+            // 0 成功送達電信端、100 成功送達手機、999 為回覆簡訊
+            if (
+              res.data.result === "0" ||
+              res.data.result === "100" ||
+              res.data.result === "999"
+            ) {
               replierModel.RES.BatchID = res.data.result.BatchID;
               replierModel.RES.Content = res.data.result.Content;
               replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
