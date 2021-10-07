@@ -48,14 +48,12 @@ const receiver = () => {
     }
     // 送出後從陣列移除
     res.status(200).send({ success: true, result: replyArr[0] });
-    replyArr.shift();
+    // replyArr.shift();
     console.log(replyArr);
   });
 
   app.listen(port, () => {
     console.log(`web 伺服器 http://localhost:${port}`);
-    // console.log(encodeURIComponent("+886952260525"));
-    // console.log(encodeURIComponent("$AS+VERSION=JAS208S_20210914"));
   });
 };
 

@@ -5,8 +5,8 @@ const App = {
   setup() {
     const replyData =
       "3\r\n\t+886908443977\tsend sms from vue3*3\t2021/09/10 14:52:20\n\t+886908443977\tsend sms from phone *2\t2021/09/10 14:56:35\n\t+886908443977\tsend sms from phone *3\t2021/09/10 14:56:35\n";
-    // const cors = `http://${config.host}:${config.corsPort}/`;
-    const cors = "https://cors-anywhere-thomas.herokuapp.com/";
+    const cors = `http://${config.host}:${config.corsPort}/`;
+    // const cors = "https://cors-anywhere-thomas.herokuapp.com/";
     const url = "http://api.every8d.com/API21/HTTP";
     const myurl = `http://${config.host}:${config.webPort}/replier/${config.taxId}`;
     const sendModel = reactive({
@@ -20,8 +20,8 @@ const App = {
     });
     const replyModel = reactive({
       // PNO: "", 分頁 (一頁 10 筆資料)
-      UID: sendModel.UID,
-      PWD: sendModel.PWD,
+      UID: config.username,
+      PWD: config.password,
       BID: "",
       RES: "",
     });
@@ -39,13 +39,12 @@ const App = {
 
     // 1. 傳送簡訊
     const sendSms = () => {
-      console.log(sendModel);
       let params = new URLSearchParams();
       params.append("UID", sendModel.UID);
       params.append("PWD", sendModel.PWD);
       params.append("MSG", sendModel.MSG);
       params.append("DEST", sendModel.DEST);
-      console.log(params.toString());
+      console.log(`sendModel: ${sendModel}`);
 
       axios
         .post(cors + url + "/sendSMS.ashx", params)
@@ -58,7 +57,7 @@ const App = {
           sendModel.RES.COST = temp[2];
           sendModel.RES.UNSEND = temp[3];
           sendModel.RES.BATCH_ID = temp[4];
-          console.log(sendModel.RES);
+          console.log(`sendModelRespond: ${sendModel.RES}`);
           // 清除參數
           params.delete("UID");
           params.delete("PWD");
@@ -69,41 +68,33 @@ const App = {
           console.log(err);
         });
 
-      getReplier();
+      // getReplier();
     };
 
-    /*
     // 2. 發送狀態查詢
     const getReplyMessage = (BID) => {
       let params = new URLSearchParams();
-      let sendReq = () => {
-        setInterval(() => {
-          axios
-            .post(cors + url + "/getReplyMessage.ashx", params)
-            .then((res) => {
-              replyModel.RES = res.data;
-              console.log(res.data);
-            })
-            .catch((err) => console.log(err));
-        }, 3000);
-      };
-      let stopReq = () => {
-        clearInterval(sendReq);
-        console.log("STOP");
-      };
-
+      replyModel.BID = BID;
       params.append("UID", replyModel.UID);
       params.append("PWD", replyModel.PWD);
-      params.append("BID", BID);
-      console.log(params.toString());
-      sendReq();
-      setTimeout(stopReq, 10000);
+      params.append("BID", replyModel.BID);
+      console.log(`replyModel: ${replyModel}`);
+
+      setInterval(() => {
+        axios
+          .post(cors + url + "/getReplyMessage.ashx", params)
+          .then((res) => {
+            replyModel.RES = res.data;
+            console.log(`replyModelRespond: ${replierModel.RES}`);
+          })
+          .catch((err) => console.log(err));
+      }, 5000);
     };
     // 監控傳送後回覆資料
     watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID));
-    */
 
-    // 3. 發送狀態主動通知
+    /* 
+    3. 發送狀態主動通知
     const getReplier = () => {
       let sendReq = () => {
         setInterval(() => {
@@ -128,9 +119,10 @@ const App = {
 
       sendReq();
     };
+    */
 
     onMounted(() => {
-      console.log(config);
+      // console.log(config);
     });
 
     return {
@@ -138,8 +130,8 @@ const App = {
       replyModel,
       replierModel,
       sendSms,
-      // getReplyMessage,
-      getReplier,
+      getReplyMessage,
+      // getReplier,
     };
   },
 };
