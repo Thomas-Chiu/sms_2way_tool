@@ -30,15 +30,17 @@
             cols="30"
             rows="10"
           ></textarea>
-          <input
-            class="btn btn-warning col"
-            type="button"
-            value="送出"
-            @click="sendSms"
-          />
+          <div class="col">
+            <input
+              class="btn btn-warning col"
+              type="button"
+              value="送出"
+              @click="sendSms"
+            />
+          </div>
         </div>
 
-        <div class="right flex-column">
+        <div class="middle flex-column">
           <h1 class="col">SMS 回覆</h1>
           <div class="col">
             識別代碼：<input
@@ -76,6 +78,21 @@
             rows="10"
             disabled
           ></textarea>
+          <div class="col">
+            <input
+              class="btn btn-info col"
+              type="button"
+              value="狀態代碼表"
+              @click="toggleShow"
+            />
+          </div>
+        </div>
+
+        <div v-if="isShow" class="right flex-column">
+          <h1 class="col">狀態代碼表</h1>
+          <div class="col">
+            <img src="./img/receive_status.png" />
+          </div>
         </div>
       </div>
     </div>

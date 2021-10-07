@@ -27,7 +27,7 @@ const receiver = () => {
       res.status(403).send({ success: false, message: "無權限" });
       return;
     }
-    console.log(req.query);
+    console.log("系統回報", req.query);
     res.status(200).send({ success: true, message: "OK" });
     replyItem["BatchID"] = req.query.BatchID;
     replyItem["ReceiverMobile"] = decodeURIComponent(req.query.RM);
@@ -37,7 +37,6 @@ const receiver = () => {
     replyItem["MsgRecordNo"] = req.query.MR;
     replyItem["UserAccount"] = req.query.USERID;
     replyArr.push(replyItem);
-    console.log(replyArr);
   });
 
   app.get("/replier/:taxId", (req, res) => {
@@ -48,7 +47,6 @@ const receiver = () => {
     // 送出後從陣列移除
     res.status(200).send({ success: true, result: replyArr[0] });
     replyArr.shift();
-    console.log(replyArr);
   });
 
   app.listen(port, () => {

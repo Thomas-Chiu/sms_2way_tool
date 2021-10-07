@@ -1,6 +1,6 @@
 import config from "./conf.js";
 
-const { reactive, watch, onMounted } = Vue;
+const { ref, reactive, watch, onMounted } = Vue;
 const App = {
   setup() {
     const replyData =
@@ -9,6 +9,7 @@ const App = {
     // const cors = "https://cors-anywhere-thomas.herokuapp.com/";
     const url = "http://api.every8d.com/API21/HTTP";
     const myurl = `http://${config.host}:${config.webPort}/replier/${config.taxId}`;
+    const isShow = ref(false);
     const sendModel = reactive({
       // SB: "", 簡訊主旨
       // ST: "", 簡訊預定發送時間 YYYYMMDDhhmnss
@@ -36,6 +37,10 @@ const App = {
         UserAccount: "",
       },
     });
+
+    const toggleShow = () => {
+      isShow.value = !isShow.value;
+    };
 
     // 1. 傳送簡訊
     const sendSms = () => {
@@ -124,15 +129,17 @@ const App = {
           .get(cors + myurl)
           .then((res) => {
             if (res.data.result === undefined) return;
-
-            replierModel.RES.BatchID = res.data.result.BatchID;
-            replierModel.RES.Content = res.data.result.Content;
-            replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
-            replierModel.RES.ReceiverMobile = res.data.result.ReceiverMobile;
-            replierModel.RES.ReplyTime = res.data.result.ReplyTime;
-            replierModel.RES.Stauts = res.data.result.Stauts;
-            replierModel.RES.UserAccount = res.data.result.UserAccount;
-            console.log("replierModelRespond:", replierModel.RES);
+            // 100 成功送達手機、999 為回覆簡訊
+            if (res.data.result === "100" || res.data.result === "999") {
+              replierModel.RES.BatchID = res.data.result.BatchID;
+              replierModel.RES.Content = res.data.result.Content;
+              replierModel.RES.MsgRecordNo = res.data.result.MsgRecordNo;
+              replierModel.RES.ReceiverMobile = res.data.result.ReceiverMobile;
+              replierModel.RES.ReplyTime = res.data.result.ReplyTime;
+              replierModel.RES.Stauts = res.data.result.Stauts;
+              replierModel.RES.UserAccount = res.data.result.UserAccount;
+              console.log("replierModelRespond:", replierModel.RES);
+            } else alert("電信端回覆異常，該訊息無法送達，請參考狀態代碼表");
           })
           .catch((err) => {
             console.log(err);
@@ -145,9 +152,11 @@ const App = {
     });
 
     return {
+      isShow,
       sendModel,
       replyModel,
       replierModel,
+      toggleShow,
       sendSms,
       getReplyMessage,
       getReplier,
