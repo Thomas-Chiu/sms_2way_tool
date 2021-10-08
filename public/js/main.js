@@ -16,7 +16,7 @@ const App = {
       UID: config.username,
       PWD: config.password,
       MSG: "",
-      DEST: "0908443977",
+      DEST: "",
       RES: { CREDIT: "", SENDED: "", COST: "", UNSEND: "", BATCH_ID: "" },
     });
     const replyModel = reactive({
