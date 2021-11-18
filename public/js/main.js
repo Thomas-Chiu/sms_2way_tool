@@ -145,7 +145,8 @@ const App = {
               replierModel.RES.Stauts = res.data.result.Stauts;
               replierModel.RES.UserAccount = res.data.result.UserAccount;
               console.log("replierModelRespond:", replierModel.RES);
-            } else alert("電信端回覆異常，該訊息無法送達，請參考狀態代碼表");
+            }
+            // else alert("電信端回覆異常，該訊息無法送達，請參考狀態代碼表");
           })
           .catch((err) => {
             console.log(err);
