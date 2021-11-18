@@ -27,7 +27,10 @@ const receiver = () => {
       res.status(403).send({ success: false, message: "無權限" });
       return;
     }
-    console.log("系統回報", req.query);
+
+    console.log("系統回報");
+    console.log(req.query);
+
     res.status(200).send({ success: true, message: "OK" });
     replyItem["BatchID"] = req.query.BatchID;
     replyItem["ReceiverMobile"] = decodeURIComponent(req.query.RM);

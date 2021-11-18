@@ -52,6 +52,8 @@ cors_proxy
     console.log("CORS 伺服器 http://" + host + ":" + port);
   });
 
-// 引用 receiver.js
+/*
+  引用 receiver.js
+ */
 const receiver = require("./receiver.js");
 receiver();

@@ -19,6 +19,7 @@ const App = {
       DEST: "",
       RES: { CREDIT: "", SENDED: "", COST: "", UNSEND: "", BATCH_ID: "" },
     });
+
     const replyModel = reactive({
       // PNO: "", 分頁 (一頁 10 筆資料)
       UID: config.username,
@@ -26,6 +27,7 @@ const App = {
       BID: "",
       RES: "",
     });
+
     const replierModel = reactive({
       RES: {
         BatchID: "",
@@ -131,8 +133,8 @@ const App = {
             if (res.data.result === undefined) return;
             // 0 成功送達電信端、100 成功送達手機、999 為回覆簡訊
             if (
-              res.data.result.Stauts === "0" ||
-              res.data.result.Stauts === "100" ||
+              // res.data.result.Stauts === "0" ||
+              // res.data.result.Stauts === "100" ||
               res.data.result.Stauts === "999"
             ) {
               replierModel.RES.BatchID = res.data.result.BatchID;
