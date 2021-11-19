@@ -52,6 +52,7 @@ const App = {
       params.append("MSG", sendModel.MSG);
       params.append("DEST", sendModel.DEST);
       console.log("sendModel:", sendModel);
+      replierModel.RES = {};
 
       axios
         .post(cors + url + "/sendSMS.ashx", params)
@@ -83,6 +84,8 @@ const App = {
             alert("發送失敗，請確認手機門號是否正確");
             return;
           }
+          if (sendModel.RES.CREDIT < 100)
+            alert("簡訊點數 < 100 封，請盡速儲值");
 
           alert(`
               剩餘點數：${sendModel.RES.CREDIT}
@@ -91,8 +94,9 @@ const App = {
               未發送數：${sendModel.RES.UNSEND}
               識別代碼：${sendModel.RES.BATCH_ID}
               `);
-          getReplyMessage(sendModel.RES.BATCH_ID);
+          // getReplyMessage(sendModel.RES.BATCH_ID);
           getReplier();
+          replierModel.RES = {};
         })
         .catch((err) => {
           console.log(err);
@@ -100,7 +104,8 @@ const App = {
     };
 
     // 2. 發送狀態查詢
-    const getReplyMessage = (BID) => {
+    /**
+      const getReplyMessage = (BID) => {
       let params = new URLSearchParams();
       replyModel.BID = BID;
       params.append("UID", replyModel.UID);
@@ -119,18 +124,22 @@ const App = {
           })
           .catch((err) => console.log(err));
       }, 5000);
-    };
+      };
+     */
 
     /* 監控傳送後回覆資料
     watch(sendModel.RES, () => getReplyMessage(sendModel.RES.BATCH_ID)); */
 
     // 3. 發送狀態主動通知
     const getReplier = () => {
-      setInterval(() => {
+      let timer = setInterval(() => {
         axios
           .get(cors + myurl)
           .then((res) => {
-            if (res.data.result === undefined) return;
+            if (res.data.result === undefined) {
+              clearInterval(timer);
+              return;
+            }
             // 0 成功送達電信端、100 成功送達手機、999 為回覆簡訊
             if (
               // res.data.result.Stauts === "0" ||
@@ -165,7 +174,7 @@ const App = {
       replierModel,
       toggleShow,
       sendSms,
-      getReplyMessage,
+      // getReplyMessage,
       getReplier,
     };
   },
