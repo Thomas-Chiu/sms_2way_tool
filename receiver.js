@@ -1,3 +1,17 @@
+const handleDate = () => {
+  const date = new Date(+new Date() + 8 * 3600 * 1000);
+  const dateTime = JSON.stringify(date).split('"')[1].split("T");
+  let fileDate = dateTime.shift();
+  return fileDate;
+};
+
+const handleTime = () => {
+  const date = new Date(+new Date() + 8 * 3600 * 1000);
+  const dateTime = JSON.stringify(date).split('"')[1].split("T");
+  let fileTime = dateTime.pop().split(".").shift();
+  return fileTime;
+};
+
 const receiver = () => {
   // const bodyParser = require("body-parser");
   const fs = require("fs");
@@ -8,10 +22,6 @@ const receiver = () => {
   const replyItem = {};
   const replyArr = [];
   const taxId = "13091876";
-  const date = new Date(+new Date() + 8 * 3600 * 1000);
-  const dateTime = JSON.stringify(date).split('"')[1].split("T");
-  let fileDate = dateTime.shift();
-  let fileTime = dateTime.pop().split(".").shift();
 
   // 處理 HTTP request
   app.use(express.json());
@@ -28,28 +38,36 @@ const receiver = () => {
 
   // 接收雙向簡訊
   app.get("/receiver", (req, res) => {
-    let writeData = `${fileTime} ${JSON.stringify(req.query)} \n`;
+    let writeData = `${handleTime()} ${JSON.stringify(req.query)} \n`;
+    // console.log(handleDate());
+    // console.log(handleTime());
+
     if (Object.keys(req.query).length === 0) {
       res.status(403).send({ success: false, message: "無權限" });
       return;
     }
     // 記錄接收 log
-    fs.writeFile(`./log/${fileDate}.txt`, writeData, { flag: "a+" }, (err) => {
-      console.log("系統回報");
-      if (err) {
-        fs.writeFile(
-          `./error/${fileDate}_error.txt`,
-          err + "\n",
-          { flag: "a+" },
-          () => {
-            console.log("log 寫檔失敗");
-            return;
-          }
-        );
-      } else {
-        console.log("log 寫檔成功");
+    fs.writeFile(
+      `./log/${handleDate()}.txt`,
+      writeData,
+      { flag: "a+" },
+      (err) => {
+        console.log("系統回報");
+        if (err) {
+          fs.writeFile(
+            `./error/${fileDate}_error.txt`,
+            err + "\n",
+            { flag: "a+" },
+            () => {
+              console.log("log 寫檔失敗");
+              return;
+            }
+          );
+        } else {
+          console.log("log 寫檔成功");
+        }
       }
-    });
+    );
 
     res.status(200).send({ success: true, message: "OK" });
     replyItem["BatchID"] = req.query.BatchID;
