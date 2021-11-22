@@ -55,7 +55,7 @@ const receiver = () => {
         console.log("系統回報");
         if (err) {
           fs.writeFile(
-            `./error/${fileDate}_error.txt`,
+            `./err/${fileDate}_err.txt`,
             err + "\n",
             { flag: "a+" },
             () => {
